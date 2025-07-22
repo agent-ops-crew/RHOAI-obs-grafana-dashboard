@@ -1,4 +1,3 @@
-{{- if .Values.grafanaOperator.enabled -}}
 {{- $files := .Files -}}
 {{- $grafanaFolder := .Values.grafanaFolder -}}
 {{- $namespace := include "grafana-dashboards.namespace" . -}}
@@ -70,6 +69,5 @@ spec:
   resources:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-{{- end }}
 {{- end }}
 {{- end }}

@@ -58,10 +58,7 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-# RBAC configuration
-rbac:
-  create: true
-  serviceAccountName: "rhoai-dashboard-manager"
+
 
 # Grafana Operator settings
 grafanaOperator:

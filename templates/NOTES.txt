@@ -33,9 +33,7 @@ Required Grafana Plugins:
 Make sure these plugins are installed in your Grafana instance.
 {{- end }}
 
-{{- if .Values.rbac.create }}
-RBAC resources have been created for dashboard management.
-{{- end }}
+
 
 {{- if .Values.instanceSelector }}
 Dashboards will be deployed to Grafana instances matching:

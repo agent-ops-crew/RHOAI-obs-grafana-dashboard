@@ -51,17 +51,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Create the name of the service account to use
-*/}}
-{{- define "grafana-dashboards.serviceAccountName" -}}
-{{- if .Values.rbac.create }}
-{{- default (include "grafana-dashboards.fullname" .) .Values.rbac.serviceAccountName }}
-{{- else }}
-{{- default "default" .Values.rbac.serviceAccountName }}
-{{- end }}
-{{- end }}
-
-{{/*
 Dashboard namespace
 */}}
 {{- define "grafana-dashboards.namespace" -}}

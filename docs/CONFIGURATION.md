@@ -29,12 +29,7 @@ This document provides detailed information about configuring the RHOAI Observab
 | `dashboard.templating.enabled` | Enable template variable substitution | `true` | No |
 | `dashboard.tags` | Tags to apply to all dashboards | `[rhoai, observability, ai-ml]` | No |
 
-### RBAC Configuration
 
-| Parameter | Description | Default | Required |
-|-----------|-------------|---------|----------|
-| `rbac.create` | Create RBAC resources | `true` | No |
-| `rbac.serviceAccountName` | Custom service account name | `""` (auto-generated) | No |
 
 ### Grafana Operator
 
@@ -234,12 +229,7 @@ plugins:
 
 ### Permission Issues
 
-If you encounter RBAC issues, ensure the service account has proper permissions:
-
-```yaml
-rbac:
-  create: true
-```
+If you encounter permission issues, ensure your kubectl context has permissions to create GrafanaDashboard custom resources in the target namespace.
 
 ## Best Practices
 

@@ -58,12 +58,7 @@ resources:
     cpu: 50m
     memory: 64Mi
 
-# Enable creation of additional Kubernetes resources
-rbac:
-  # Create RBAC resources for dashboard management
-  create: true
-  # Service account name to use (if not specified, defaults to chart fullname)
-  serviceAccountName: ""
+
 
 # Configuration for the Grafana Operator integration
 grafanaOperator:
