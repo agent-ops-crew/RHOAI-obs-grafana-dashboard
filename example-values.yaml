@@ -1,0 +1,7 @@
+# Name of the folders inside of the dashboards directory to deploy
+dashboard_folders:
+  - llm-d # For LLM-D dashboards
+  - vllm # For vLLM dashboards
+
+# Folder name in Grafana where the dashboards will be placed
+grafanaFolder: "Openshift AI Observability"

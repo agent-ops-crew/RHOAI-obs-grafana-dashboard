@@ -1,14 +1,6 @@
-# Grafana Dashboards Helm Chart
+# Grafana Dashboards for vLLM and LLM-D
 
-This Helm chart deploys Grafana dashboards as Kubernetes custom resources using the Grafana Operator.
-
-## Features
-
-- Automatically discovers and deploys all JSON dashboard files from the `dashboards` directory
-- Supports templating and variable substitution in dashboard JSON files
-- Configurable namespace and labels
-- Supports Grafana folder organization
-- Customizable refresh intervals and time ranges
+This Helm chart for deploying vLLM and LLM-D dashboards to Grafana.
 
 ## Prerequisites
 
@@ -16,25 +8,22 @@ This Helm chart deploys Grafana dashboards as Kubernetes custom resources using 
 - Helm
 - Grafana Operator installed in your cluster
 
-## Installation
+## Quickstart
 
-1. Add the chart repository:
-   ```bash
-   helm repo add my-repo https://charts.example.com/
-   ```
+Use the following command to install the dashboards into `user-grafana` namespace:
 
-2. Install the chart:
-   ```bash
-   helm install my-dashboards my-repo/grafana-dashboards -n monitoring
-   ```
+```bash
+helm install grafana-dashboards . -n user-grafana
+```
+
+> [!NOTE]
+> Make sure to replace `user-grafana` with the namespace where your Grafana instance is installed.
+
+This will install a set of dashboards for vLLM and LLM-D in the `Openshift AI Observability` folder in your Grafana instance.
+
+See the [example-values.yaml](example-values.yaml) for basic configuration options.
 
 ## Usage
-
-### Adding Dashboards
-
-1. Place your Grafana dashboard JSON files in the `dashboards` directory
-2. The chart will automatically create a `GrafanaDashboard` resource for each JSON file
-3. The dashboard name will be derived from the filename (without the .json extension)
 
 ### Configuration
 
@@ -80,18 +69,12 @@ dashboard_folders:
   - vllm # For VLLM dashboards
 ```
 
-## Creating Dashboards
-
-1. Export your dashboard from Grafana UI or create a new JSON file
-2. Save it in the `dashboards` directory with a descriptive name (e.g., `kubernetes-cluster.json`)
-3. The chart will automatically pick up the new dashboard on the next deployment
-
 ## Upgrading
 
 To upgrade your deployment with a new dashboard or configuration:
 
 ```bash
-helm upgrade my-dashboards my-repo/grafana-dashboards -n monitoring -f values.yaml
+helm upgrade grafana-dashboards . -n user-grafana -f values.yaml
 ```
 
 ## Uninstalling
@@ -99,15 +82,6 @@ helm upgrade my-dashboards my-repo/grafana-dashboards -n monitoring -f values.ya
 To uninstall/delete the deployment:
 
 ```bash
-helm uninstall my-dashboards -n monitoring
+helm uninstall grafana-dashboards -n user-grafana
 ```
 
-## Notes
-
-- The chart uses the `GrafanaDashboard` custom resource which requires the Grafana Operator to be installed in your cluster
-- Dashboard JSON files should be valid Grafana dashboard exports
-- The chart will automatically convert filenames to kebab-case for resource names
-
-## License
-
-[Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0) RHOAI-obs-grafana-dashboard
